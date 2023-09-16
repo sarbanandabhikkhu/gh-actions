@@ -24,10 +24,11 @@ app.handleRequest = (req, res) => {
     queries: perseUrl.query,
     headers: req.headers,
   };
+  // console.log(requestProperties);
 
-  console.log(requestProperties);
+  const reqData = JSON.stringify(requestProperties, null, 4);
 
-  res.end("Hello World!");
+  res.end(reqData);
 };
 
 app.createServer();
