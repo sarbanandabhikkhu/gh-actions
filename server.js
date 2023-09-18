@@ -1,5 +1,7 @@
-const http = require("http");
-const url = require("url");
+import http from "http";
+import url from "url";
+
+import requestHandler from "./handlers/requestHandler.js";
 
 const app = {};
 
@@ -25,10 +27,9 @@ app.handleRequest = (req, res) => {
     headers: req.headers,
   };
   // console.log(requestProperties);
+  res.end(JSON.stringify(requestProperties, null, 4));
 
-  const reqData = JSON.stringify(requestProperties, null, 4);
-
-  res.end(reqData);
+  requestHandler(requestProperties, res);
 };
 
 app.createServer();
